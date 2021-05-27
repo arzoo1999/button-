@@ -2,12 +2,13 @@ import React, { useState } from "react";
 import image from "./images/img1.png";
 import Compt from "./Compt";
 
-function Heading() {
+function Heading(props) {
   const state = useState();
-  const [txtcolor, setColor] = useState("#FF4500");
+  const [txtColor, setColor] = useState("#FF4500");
   const txtCol = () => {
+    props.setIsClicked(!props.isClicked);
     setColor("#A52A2A");
-    return txtcolor;
+
   };
 
   return (
@@ -15,7 +16,7 @@ function Heading() {
       <div className="row">
         <div className="col-6 d-flex justify-content-center">
           <div>
-            <h1 className="ms-5 fw-bold" style={{ color: txtcolor }}>
+            <h1 className="ms-5 fw-bold" style={{ color: txtColor }}>
               Explore and Travel
             </h1>
             <h3>Holiday finder</h3>
@@ -81,7 +82,7 @@ function Heading() {
           <img src={image} alt="images" style={{ width: "70%" }}></img>
         </div>
       </div>
-      <Compt color={txtcolor} />
+
     </div>
   );
 }

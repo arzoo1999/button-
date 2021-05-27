@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import image from "./images/sec.png";
 
 //let head1 = "Guides by Thousands Sunny";
@@ -7,16 +7,18 @@ function Compt(props) {
   const state = useState();
   const array = [];
   const [count, setCount] = useState(0);
+  const [txtColor, setTxtColor] = useState('red');
   const [head1, sethead] = useState([
     "Guides by Thousands Sunny",
     "Arzoo",
     "Ayesha",
     "Rabia",
   ]);
-  const [txtcolor, setColor] = useState("#FF4500");
-  const chgCol = () => {
-    setColor("#A52A2A");
-  };
+  useEffect(() => {
+    { props.isClicked ? setTxtColor('yellow') : setTxtColor('red') }
+
+  }, [props.isClicked])
+
   const chgNam = () => {
     if (count < 3) {
       setCount(count + 1);
@@ -30,7 +32,7 @@ function Compt(props) {
       <div className="row   ">
         <div className="col-6 d-flex justify-content-center">
           <div>
-            <h1 className="fw-bold ms-3 col-10" style={{ color: props.color }}>
+            <h1 className="fw-bold ms-3 col-10" style={{ color: txtColor }}>
               {head1[count]}
             </h1>
             <p className="ms-3 col-8">
@@ -41,7 +43,7 @@ function Compt(props) {
             <button
               className="btn btn-outline-warning  mt-3 ms-3 "
               style={{ backgroundColor: "orange", color: "white" }}
-              //onClick={chgNam}
+            //onClick={chgNam}
             >
               Download
             </button>
